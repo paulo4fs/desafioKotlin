@@ -1,9 +1,10 @@
 class DigitalHouseManager(
-    var alunos: MutableList<Aluno>,
-    var professores: MutableList<Professor>,
-    var cursos: MutableList<Curso>,
-    var matriculas: MutableList<Matricula>
 ) {
+    var alunos = mutableListOf<Aluno>()
+    var professores = mutableListOf<Professor>()
+    var cursos = mutableListOf<Curso>()
+    var matriculas = mutableListOf<Matricula>()
+
     fun registrarCurso(
         nome: String,
         codigoCurso: Int,
@@ -19,6 +20,23 @@ class DigitalHouseManager(
         codigoProfessor: Int,
         quantidadeDeHoras: Int
     ) {
+//        var codigo: Int
+//
+//        if (professores.size > 0) {
+//            codigo = professores.last().codigo + 1
+//        } else {
+//            codigo = 0
+//        }
+//
+//        professores.add(
+//            ProfessorAdjunto(
+//                nome,
+//                sobrenome,
+//                codigoProfessor,
+//                codigo,
+//                quantidadeDeHoras
+//            )
+//        )
     }
 
     fun registrarProfessorTitular(
@@ -36,6 +54,8 @@ class DigitalHouseManager(
         sobrenome: String,
         codigoAluno: Int
     ) {
+        alunos.add(Aluno(nome, sobrenome, codigoAluno))
+        println("Aluno registrado")
     }
 
     fun matricularAluno(
