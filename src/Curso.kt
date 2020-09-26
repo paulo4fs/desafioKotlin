@@ -9,13 +9,18 @@ class Curso(
     lateinit var professorTitular: ProfessorTitular
     lateinit var professorAdjunto: ProfessorAdjunto
 
-//    constructor(professorTitular: ProfessorTitular) {
-//        this.professorTitular = professorTitular
-//    }
-
     fun adicionarUmAluno(umAluno: Aluno): Boolean {
-        return true
+        if (qtdMaxima >= listaAlunos.size + 1) {
+            return true
+        }
+        return false
     }
 
-    fun excluirAluno(umAluno: Aluno) {}
+    fun excluirAluno(umAluno: Aluno) {
+        if (listaAlunos.contains(umAluno)) {
+            listaAlunos.remove(umAluno)
+        } else {
+            println("Aluno não encontrado")
+        }
+    }
 }

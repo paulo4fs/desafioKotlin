@@ -27,11 +27,48 @@ fun main() {
             4 -> {
                 registrarProfessorTitular(manager)
             }
+            5 -> {
+                excluirProfessor(manager)
+            }
             6 -> {
                 registrarAluno(manager)
             }
+            7 -> {
+                matricularAluno(manager)
+            }
+            8 -> {
+                alocarProfessores(manager)
+            }
         }
     }
+}
+
+fun alocarProfessores(manager: DigitalHouseManager) {
+    println("######################")
+    println("Digite o código do curso:")
+    var codigoCurso = readLine()!!.toInt()
+    println("Digite o código do professor titular:")
+    var codigoProfessorTitular = readLine()!!.toInt()
+    println("Digite o código do professor adjunto:")
+    var codigoProfessorAdjunto = readLine()!!.toInt()
+    manager.alocarProfessores(codigoCurso, codigoProfessorTitular, codigoProfessorAdjunto)
+}
+
+fun matricularAluno(manager: DigitalHouseManager) {
+    println("######################")
+    println("Digite o código do aluno:")
+    var codigoAluno = readLine()!!.toInt()
+    println("Digite o código do curso:")
+    var codigoCurso = readLine()!!.toInt()
+    manager.matricularAluno(codigoAluno, codigoCurso)
+}
+
+fun excluirProfessor(manager: DigitalHouseManager) {
+    println("######################")
+    println("Digite o código do professor:")
+    var codigo = readLine()!!.toInt()
+
+    manager.excluirProfessor(codigo)
 }
 
 fun registrarCurso(manager: DigitalHouseManager) {
@@ -52,19 +89,6 @@ fun excluirCurso(manager: DigitalHouseManager) {
     manager.excluirCurso(codigo)
 }
 
-fun registrarProfessorTitular(manager: DigitalHouseManager) {
-    println("######################")
-    println("Digite o nome do professor:")
-    var nome = readLine()!!.toString()
-    println("Digite o sobrenome do professor:")
-    var sobrenome = readLine()!!.toString()
-    println("Digite a especialidade:")
-    var especialidade = readLine()!!.toString()
-    var codigo = if (manager.professores.size > 0) manager.professores.last().codigo + 1 else 0
-
-    manager.registrarProfessorTitular(nome, sobrenome, codigo, especialidade)
-}
-
 
 fun registrarProfessorAdjunto(manager: DigitalHouseManager) {
     println("######################")
@@ -78,6 +102,19 @@ fun registrarProfessorAdjunto(manager: DigitalHouseManager) {
     var codigo = if (manager.professores.size > 0) manager.professores.last().codigo + 1 else 0
 
     manager.registrarProfessorAdjunto(nome, sobrenome, codigo, horasMonitoria)
+}
+
+fun registrarProfessorTitular(manager: DigitalHouseManager) {
+    println("######################")
+    println("Digite o nome do professor:")
+    var nome = readLine()!!.toString()
+    println("Digite o sobrenome do professor:")
+    var sobrenome = readLine()!!.toString()
+    println("Digite a especialidade:")
+    var especialidade = readLine()!!.toString()
+    var codigo = if (manager.professores.size > 0) manager.professores.last().codigo + 1 else 0
+
+    manager.registrarProfessorTitular(nome, sobrenome, codigo, especialidade)
 }
 
 fun registrarAluno(manager: DigitalHouseManager) {
