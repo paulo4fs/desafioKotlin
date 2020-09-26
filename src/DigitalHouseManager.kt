@@ -10,9 +10,14 @@ class DigitalHouseManager(
         codigoCurso: Int,
         quantidadeMaximaDeAlunos: Int
     ) {
+        cursos.add(Curso(nome, codigoCurso, quantidadeMaximaDeAlunos))
     }
 
-    fun excluirCurso(codigoCurso: Int) {}
+    fun excluirCurso(codigoCurso: Int) {
+        var deletado = cursos.filter { it.codigo == codigoCurso }
+
+        if (deletado.isNotEmpty()) cursos.remove(deletado) else println("código não encontrado")
+    }
 
     fun registrarProfessorAdjunto(
         nome: String,

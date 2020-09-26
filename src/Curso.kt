@@ -1,13 +1,21 @@
 class Curso(
     var nome: String,
     val codigo: Int,
-    var professorTitular: ProfessorTitular,
-    var professorAdjunto: ProfessorAdjunto,
     var qtdMaxima: Int,
-    var listaAlunos: MutableList<Aluno>
 ) {
+
+    var listaAlunos = mutableListOf<Aluno>()
+
+    lateinit var professorTitular: ProfessorTitular
+    lateinit var professorAdjunto: ProfessorAdjunto
+
+//    constructor(professorTitular: ProfessorTitular) {
+//        this.professorTitular = professorTitular
+//    }
+
     fun adicionarUmAluno(umAluno: Aluno): Boolean {
         return true
     }
+
     fun excluirAluno(umAluno: Aluno) {}
 }
