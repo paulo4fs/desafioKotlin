@@ -20,23 +20,16 @@ class DigitalHouseManager(
         codigoProfessor: Int,
         quantidadeDeHoras: Int
     ) {
-//        var codigo: Int
-//
-//        if (professores.size > 0) {
-//            codigo = professores.last().codigo + 1
-//        } else {
-//            codigo = 0
-//        }
-//
-//        professores.add(
-//            ProfessorAdjunto(
-//                nome,
-//                sobrenome,
-//                codigoProfessor,
-//                codigo,
-//                quantidadeDeHoras
-//            )
-//        )
+        professores.add(
+            ProfessorAdjunto(
+                nome,
+                sobrenome,
+                0,
+                codigoProfessor,
+                quantidadeDeHoras
+            )
+        )
+        println("Professor adjunto registrado")
     }
 
     fun registrarProfessorTitular(
@@ -45,6 +38,16 @@ class DigitalHouseManager(
         codigoProfessor: Int,
         especialidade: String
     ) {
+        professores.add(
+            ProfessorTitular(
+                nome,
+                sobrenome,
+                0,
+                codigoProfessor,
+                especialidade
+            )
+        )
+        println("Professor titular registrado")
     }
 
     fun excluirProfessor(codigoProfessor: Int) {}
