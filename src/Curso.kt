@@ -6,4 +6,8 @@ class Curso(
     var qtdMaxima: Int,
     var listaAlunos: MutableList<Aluno>
 ) {
+    fun adicionarUmAluno(umAluno: Aluno): Boolean {
+        return true
+    }
+    fun excluirAluno(umAluno: Aluno) {}
 }
