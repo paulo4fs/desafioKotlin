@@ -3,7 +3,7 @@ fun main() {
     var opcao: Int = 1
     while (true) {
         println("######################")
-        println("1 - Registrar curso:")
+        println("1 - Registrar curso")
         println("2 - Excluir curso")
         println("3 - Registrar professor adjunto")
         println("4 - Registrar professor titular")
@@ -12,6 +12,7 @@ fun main() {
         println("7 - Matricular aluno")
         println("8 - Alocar professores")
         println("0 - Para sair")
+        println("Digite a opção desejada:")
         opcao = readLine()!!.toInt()
         when (opcao) {
             0 -> break
@@ -47,11 +48,12 @@ fun alocarProfessores(manager: DigitalHouseManager) {
     println("######################")
     println("Digite o código do curso:")
     var codigoCurso = readLine()!!.toInt()
-    println("Digite o código do professor titular:")
-    var codigoProfessorTitular = readLine()!!.toInt()
     println("Digite o código do professor adjunto:")
     var codigoProfessorAdjunto = readLine()!!.toInt()
-    manager.alocarProfessores(codigoCurso, codigoProfessorTitular, codigoProfessorAdjunto)
+    println("Digite o código do professor titular:")
+    var codigoProfessorTitular = readLine()!!.toInt()
+
+    manager.alocarProfessores(codigoCurso, codigoProfessorAdjunto, codigoProfessorTitular)
 }
 
 fun matricularAluno(manager: DigitalHouseManager) {
@@ -60,6 +62,7 @@ fun matricularAluno(manager: DigitalHouseManager) {
     var codigoAluno = readLine()!!.toInt()
     println("Digite o código do curso:")
     var codigoCurso = readLine()!!.toInt()
+
     manager.matricularAluno(codigoAluno, codigoCurso)
 }
 
@@ -77,7 +80,9 @@ fun registrarCurso(manager: DigitalHouseManager) {
     var nome = readLine()!!.toString()
     println("Digite a quantidade máxima de alunos:")
     var qtdMaxima = readLine()!!.toInt()
+
     var codigo = if (manager.cursos.size > 0) manager.cursos.last().codigo + 1 else 0
+
     manager.registrarCurso(nome, codigo, qtdMaxima)
 }
 
@@ -112,6 +117,7 @@ fun registrarProfessorTitular(manager: DigitalHouseManager) {
     var sobrenome = readLine()!!.toString()
     println("Digite a especialidade:")
     var especialidade = readLine()!!.toString()
+
     var codigo = if (manager.professores.size > 0) manager.professores.last().codigo + 1 else 0
 
     manager.registrarProfessorTitular(nome, sobrenome, codigo, especialidade)
@@ -123,6 +129,8 @@ fun registrarAluno(manager: DigitalHouseManager) {
     var nome = readLine()!!.toString()
     println("Digite o sobrenome do aluno:")
     var sobrenome = readLine()!!.toString()
-    var codigo = manager.alunos.size
+
+    var codigo = if (manager.alunos.size > 0) manager.alunos.last().codigo + 1 else 0
+
     manager.registrarAluno(nome, sobrenome, codigo)
 }

@@ -76,6 +76,7 @@ class DigitalHouseManager(
     ) {
         var aluno = alunos.filter { it.codigo == codigoAluno }
         var curso = cursos.filter { it.codigo == codigoCurso }
+
         if (aluno.isNotEmpty() && curso.isNotEmpty()) {
             if (curso[0].adicionarUmAluno(aluno[0])) {
                 matriculas.add(Matricula(aluno[0], curso[0]))
@@ -91,11 +92,15 @@ class DigitalHouseManager(
 
     fun alocarProfessores(
         codigoCurso: Int,
-        codigoProfessorTitular: Int,
-        codigoProfessorAdjunto: Int
+        codigoProfessorAdjunto: Int,
+        codigoProfessorTitular: Int
     ) {
-        var curso = cursos.filter { it.codigo == codigoCurso }
-        var professorTitular = professores.filter { it.codigo == codigoProfessorTitular }
-        var professorAdjunto = professores.filter { it.codigo == codigoProfessorAdjunto }
+        var curso = cursos.filter { it.codigo == codigoCurso }[0]
+        var professorAdjunto = professores.filter { it.codigo == codigoProfessorAdjunto }[0]
+        var professorTitular = professores.filter { it.codigo == codigoProfessorTitular }[0]
+
+        curso.professorTitular = professorTitular
+        curso.professorAdjunto = professorAdjunto
+        println("professor Adjunto e Titular adicionados ao curso ${curso.codigo}")
     }
 }

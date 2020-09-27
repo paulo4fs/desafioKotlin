@@ -6,8 +6,8 @@ class Curso(
 
     var listaAlunos = mutableListOf<Aluno>()
 
-    lateinit var professorTitular: ProfessorTitular
-    lateinit var professorAdjunto: ProfessorAdjunto
+    var professorAdjunto: Professor? = null
+    var professorTitular: Professor? = null
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean {
         if (qtdMaxima >= listaAlunos.size + 1) {
