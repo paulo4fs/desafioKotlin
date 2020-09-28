@@ -11,12 +11,18 @@ class DigitalHouseManager(
         quantidadeMaximaDeAlunos: Int
     ) {
         cursos.add(Curso(nome, codigoCurso, quantidadeMaximaDeAlunos))
+        println("curso registrado com código: ${cursos.last().codigo}")
     }
 
     fun excluirCurso(codigoCurso: Int) {
         var deletado = cursos.filter { it.codigo == codigoCurso }
 
-        if (deletado.isNotEmpty()) cursos.remove(deletado) else println("Código não encontrado")
+        if (deletado.isNotEmpty()) {
+            cursos.remove(deletado[0])
+            println("Curso removido")
+        } else {
+            println("Código não encontrado")
+        }
     }
 
     fun registrarProfessorAdjunto(
@@ -34,7 +40,10 @@ class DigitalHouseManager(
                 quantidadeDeHoras
             )
         )
-        println("Professor adjunto registrado")
+        println(
+            "Professor adjunto registrado com código: " +
+                    "${professores.last().codigo}"
+        )
     }
 
     fun registrarProfessorTitular(
@@ -52,13 +61,23 @@ class DigitalHouseManager(
                 especialidade
             )
         )
-        println("Professor titular registrado")
+        println(
+            "Professor titular registrado com código: " +
+                    "${professores.last().codigo}"
+        )
     }
 
     fun excluirProfessor(codigoProfessor: Int) {
-        var deletado = cursos.filter { it.codigo == codigoProfessor }
+        var deletado = professores.filter {
+            it.codigo == codigoProfessor
+        }
 
-        if (deletado.isNotEmpty()) cursos.remove(deletado) else println("Código não encontrado")
+        if (deletado.isNotEmpty()) {
+            professores.remove(deletado[0])
+            println("Professor excluído da lista")
+        } else {
+            println("Código não encontrado")
+        }
     }
 
     fun registrarAluno(
@@ -67,7 +86,7 @@ class DigitalHouseManager(
         codigoAluno: Int
     ) {
         alunos.add(Aluno(nome, sobrenome, codigoAluno))
-        println("Aluno registrado")
+        println("Aluno registrado com código: ${alunos.last().codigo}")
     }
 
     fun matricularAluno(
@@ -96,11 +115,16 @@ class DigitalHouseManager(
         codigoProfessorTitular: Int
     ) {
         var curso = cursos.filter { it.codigo == codigoCurso }[0]
-        var professorAdjunto = professores.filter { it.codigo == codigoProfessorAdjunto }[0]
-        var professorTitular = professores.filter { it.codigo == codigoProfessorTitular }[0]
+        var professorAdjunto = professores.filter {
+            it.codigo == codigoProfessorAdjunto
+        }[0]
+        var professorTitular = professores.filter {
+            it.codigo == codigoProfessorTitular
+        }[0]
 
         curso.professorTitular = professorTitular
         curso.professorAdjunto = professorAdjunto
-        println("professor Adjunto e Titular adicionados ao curso ${curso.codigo}")
+        println("professor Adjunto e Titular adicionados ao curso " +
+                "${curso.codigo}")
     }
 }

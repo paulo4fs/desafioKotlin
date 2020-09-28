@@ -44,17 +44,6 @@ fun main() {
     }
 }
 
-fun alocarProfessores(manager: DigitalHouseManager) {
-    println("######################")
-    println("Digite o código do curso:")
-    var codigoCurso = readLine()!!.toInt()
-    println("Digite o código do professor adjunto:")
-    var codigoProfessorAdjunto = readLine()!!.toInt()
-    println("Digite o código do professor titular:")
-    var codigoProfessorTitular = readLine()!!.toInt()
-
-    manager.alocarProfessores(codigoCurso, codigoProfessorAdjunto, codigoProfessorTitular)
-}
 
 fun matricularAluno(manager: DigitalHouseManager) {
     println("######################")
@@ -133,4 +122,16 @@ fun registrarAluno(manager: DigitalHouseManager) {
     var codigo = if (manager.alunos.size > 0) manager.alunos.last().codigo + 1 else 0
 
     manager.registrarAluno(nome, sobrenome, codigo)
+}
+
+fun alocarProfessores(manager: DigitalHouseManager) {
+    println("######################")
+    println("Digite o código do curso:")
+    var codigoCurso = readLine()!!.toInt()
+    println("Digite o código do professor adjunto:")
+    var codigoProfessorAdjunto = readLine()!!.toInt()
+    println("Digite o código do professor titular:")
+    var codigoProfessorTitular = readLine()!!.toInt()
+
+    manager.alocarProfessores(codigoCurso, codigoProfessorAdjunto, codigoProfessorTitular)
 }
