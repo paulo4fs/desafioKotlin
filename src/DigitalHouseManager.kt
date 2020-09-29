@@ -80,7 +80,7 @@ class DigitalHouseManager(
         }
     }
 
-    fun registrarAluno(
+    fun matricularAluno(
         nome: String,
         sobrenome: String,
         codigoAluno: Int
